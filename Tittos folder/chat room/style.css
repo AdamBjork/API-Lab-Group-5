@@ -1,0 +1,11 @@
+body {
+  font-family: sans-serif;
+  background: url('http://www.cornwallnewswatch.com/wp-content/uploads/2014/07/Fire-01.jpg');
+  color: white;
+}
+
+#chatbox {
+  height: 200px;
+  max-width: 400px;
+  overflow-y: scroll;
+}
