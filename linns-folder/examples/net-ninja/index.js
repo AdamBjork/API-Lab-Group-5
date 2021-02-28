@@ -8,7 +8,7 @@ const server = app.listen(4000, function () {
     console.log('Listening to request on port 4000');
 });
 
-// Static files, folder public to serv
+// Static files, folder public to server
 app.use(express.static('public'));
 
 // Socket setup
