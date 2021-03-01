@@ -1,2 +1,2 @@
 // Make connection
-var socket = io.connect('http://localhost:4000');
+var browserSocket = io.connect('http://localhost:4000');
