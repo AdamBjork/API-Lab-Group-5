@@ -3,11 +3,25 @@
     <head>
         <meta charset="utf-8" />
         <title>Net Ninja Websockets Chat</title>
-        <script src="/socket.io/socket.io.js"></script>
         <link href="/style.css" rel="stylesheet" />
     </head>
     <body>
         <h1>Woo, you see me!</h1>
+        <div id="ninja-chat">
+            <div id="chat-window">
+                <div id="output"></div>
+                <div id="feedback"></div>
+            </div>
+            <input id="handle" type="text" placeholder="Name" />
+            <input id="message" type="text" placeholder="Message" />
+            <button id="send">Send</button>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+
+        <script>
+            // var socket = io();
+        </script>
         <script src="/chat.js"></script>
     </body>
 </html>

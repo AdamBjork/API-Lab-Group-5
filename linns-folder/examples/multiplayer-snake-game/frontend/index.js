@@ -1,7 +1,13 @@
 // create color for canvas, snake, food
-const BG_COLOUR = '"231f20';
+const BG_COLOUR = '#231f20';
 const SNAKE_COLOUR = '#c2c2c2';
 const FOOD_COLOUR = '#e66916';
+
+// connect socket
+var socket = io();
+//const socket = io('http://localhost:3000');
+
+socket.on('init', handleInit);
 
 // Grab hold on game screen div
 const gameScreen = document.getElementById('gameScreen');
@@ -80,3 +86,8 @@ function paintPlayer(playerState, size, colour) {
 
 // call paintGame
 paintGame(gameState);
+
+// function socket init
+function handleInit(msg) {
+    console.log(msg);
+}
