@@ -27,6 +27,7 @@ body {
     right: 0;
     bottom: 0;
     top: 0;
+    margin-top: 50px;
 }
 
 .colors {
@@ -43,13 +44,14 @@ body {
     background-color: black;
 }
 .color.red {
-    background-color: red;
+    /* reduce the hue on the colours a bit */
+    background-color: rgb(231, 2, 2);
 }
 .color.green {
-    background-color: green;
+    background-color: rgb(39, 104, 39);
 }
 .color.blue {
-    background-color: blue;
+    background-color: rgb(21, 21, 190);
 }
 .color.yellow {
     background-color: yellow;
