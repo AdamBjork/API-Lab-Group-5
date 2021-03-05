@@ -34,13 +34,24 @@
     onResize();
 
     function drawLine(x0, y0, x1, y1, color, emit) {
+        /* draw line
         context.beginPath();
         context.moveTo(x0, y0);
         context.lineTo(x1, y1);
         context.strokeStyle = color;
-        context.lineWidth = 2;
+        context.lineWidth = 5; // increasing lineWidth
         context.stroke();
         context.closePath();
+        */
+
+        // exchange line to ellipse
+        context.fillStyle = color;
+        context.beginPath();
+        context.ellipse(x0, y0, 35, 32, Math.PI / 4, 0, 2 * Math.PI);
+        context.strokeStyle = color;
+        context.lineWidth = 2; // increasing lineWidth
+        context.stroke();
+        context.fill();
 
         if (!emit) {
             return;
@@ -76,6 +87,7 @@
             current.color,
             true
         );
+        drawEllipse();
     }
 
     function onMouseMove(e) {
@@ -128,4 +140,7 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
+
+    // create draw ellipse function
+    function drawEllipse() {}
 })();
