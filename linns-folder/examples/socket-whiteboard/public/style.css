@@ -45,13 +45,13 @@ body {
 }
 .color.red {
     /* reduce the hue on the colours a bit */
-    background-color: rgb(231, 2, 2);
+    background-color: red;
 }
 .color.green {
-    background-color: rgb(39, 104, 39);
+    background-color: green;
 }
 .color.blue {
-    background-color: rgb(21, 21, 190);
+    background-color: blue;
 }
 .color.yellow {
     background-color: yellow;
