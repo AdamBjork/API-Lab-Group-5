@@ -1,0 +1,22 @@
+{
+    "name": "prototype1",
+    "version": "1.0.0",
+    "description": "prototype with socket io and johnny five",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "keywords": [
+        "socket",
+        "johnnyfive",
+        "prototype"
+    ],
+    "author": "Linn Claesson",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "johnny-five": "^2.0.0",
+        "socket.io": "^3.1.2"
+    }
+}
