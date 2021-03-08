@@ -19,5 +19,28 @@ io.on('connection', (socket) => {
     { 'user': 'Server', 'message': socket.username + ' has joined!'})
   })
 })
+app.post("/set-arduino-light", (request, response) => {
+  const data = request.body;
+  const someString = "Hi buddy!";
 
+  //for debugging
+  console.log("message: " + data.message);
+  console.log("someBoolean: " + data.someBoolean);
+
+  // function for turning the blinking ON/OFF
+  if(isLightOn == false) {
+  led.blink(500);
+  } else {
+  led.stop().off();
+  }
+  isLightOn = !isLightOn;
+  
+  //for debugging using phone
+  data.isLightOn = isLightOn;
+  data.someString = someString;
+  response.json({
+  status: "success",
+  data: JSON.stringify(data)
+  });
+});
 http.listen(5000, () => console.log('listening on port 5000'))

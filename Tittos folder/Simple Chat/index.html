@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Fireside Chat</title>
+  <title>Simple Chat App</title>
   <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
-  <h1>Fireside Chat</h1>
+  <h1>Simple Chat App</h1>
   <div id="app">
     <div v-if="state == 0">
-      <h3>Welcome! Please choose a username</h3>
+      <h3>Welcome to the chat! <br> Please choose a username to start chatting.</h3>
       <form @submit.prevent="setUsername">
         <input type="text" placeholder="Username..." v-model:value="username" />
-        <input type="submit" value="Join" />
+        <input type="submit" value="Start Chatting!" />
       </form>
-      <button @click="continueWithoutUsername">Join as a Guest</button>
     </div>
     <div v-if="state == 1">
       <ul id="chatbox">
@@ -62,14 +61,41 @@
       mounted: function () {
         socket.on('message', function (message) {
           app.messages.push(message);
-          // this needs to be done AFTER vue updates the page!!
-          app.$nextTick(function () {
-            var messageBox = document.getElementById('chatbox');
-            messageBox.scrollTop = messageBox.scrollHeight;
-          });
+          
+        
         });
       }
     });
+    const button = document.getElementById("send");
+        let isButtonActive;
+    button.addEventListener("mousedown", onMouseDown);
+
+            //start the initial startup
+        onStart();
+        //What happens when you press the mouse down
+        async function onMouseDown(event) {
+            const message = "Change light state";
+            const someBoolean = true;
+            const data = { message, someBoolean };
+            const options = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }
+
+            const response = await fetch("/set-arduino-light", options);
+            const responseJSON = await response.json();
+
+            constResponseJSONdata = JSON.parse(responseJSON.data);
+
+            console.log("someString: " + constResponseJSONdata.someString);
+
+            isButtonActive = constResponseJSONdata.isLightOn;
+
+            setButtonState();
+        }
   </script>
 </body>
 </html>
