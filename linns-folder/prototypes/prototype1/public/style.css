@@ -5,3 +5,19 @@
     margin: 12px;
     padding: 12px;
 }
+
+#button1 {
+    color: cornsilk;
+    background-color: rgb(115, 165, 216);
+    display: inline-block;
+    margin: 12px;
+    padding: 12px;
+}
+
+#button2 {
+    color: cornsilk;
+    background-color: rgb(207, 80, 80);
+    display: inline-block;
+    margin: 12px;
+    padding: 12px;
+}

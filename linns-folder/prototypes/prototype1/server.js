@@ -25,13 +25,17 @@ const { Board, Led } = require('johnny-five');
 const board = new Board();
 
 // VARIABLES
-//var for checking if the light is on or off
-let isLightOn = false;
+//var for checking if led1 and led2 is on or off
+let isLedOneOn = false;
+let isLedTwoOn = false;
+let isBothOn = false;
 
 // BOARD READY
 board.on('ready', () => {
     console.log('hello board');
-    const led = new Led(13); // port 13 on arduino
+    const led1 = new Led(13); // port 13 on arduino
+    const led2 = new Led(7);
+    const bothLed = new Led(3);
 
     // function when socket connect
     io.on('connection', function (socket) {
@@ -46,16 +50,32 @@ board.on('ready', () => {
         console.log('message: ' + data.message);
         console.log('someBoolean: ' + data.someBoolean);
 
-        // function for turning the blinking ON/OFF
-        if (isLightOn == false) {
-            led.blink(500);
+        // function for turning the led1 ON/OFF
+        if (isLedOneOn === false) {
+            led1.blink(500);
         } else {
-            led.stop().off();
+            led1.stop().off();
         }
-        isLightOn = !isLightOn;
+        isLedOneOn = !isLedOneOn;
+
+        // function for turning led2 on/off
+        if (isLedTwoOn === false) {
+            led2.blink(500);
+        } else {
+            led2.stop().off();
+        }
+        isLedTwoOn = !isLedTwoOn;
+
+        // function for both led
+        if (isLedOneOn === true && isLedTwoOn === true) {
+            bothLed.blink(500);
+        } else {
+            bothLed.stop().off();
+        }
 
         //for debugging using phone
-        data.isLightOn = isLightOn;
+        data.isLedOneOn = isLedOneOn;
+        data.isLedTwoOn = isLedTwoOn;
         data.someString = someString;
         response.json({
             status: 'success',
@@ -66,7 +86,7 @@ board.on('ready', () => {
     app.get('/light-state', function (request, response) {
         console.log('get received');
 
-        const data = { isLightOn };
+        const data = { isLedOneOn, isLedTwoOn };
         response.send(data);
     });
 });
