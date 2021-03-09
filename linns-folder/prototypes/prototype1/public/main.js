@@ -6,85 +6,40 @@ const button1 = document.getElementById('button1');
 const button2 = document.getElementById('button2');
 const feedback = document.getElementById('feedback');
 const display = document.getElementById('display');
+const hello = document.getElementById('hello');
 
 let isBothActive;
-let isButtonOnePressed = false;
+let isButtonOnePressed;
 let isButtonTwoPressed;
 
 // event listeners
 button1.addEventListener('mousedown', onButtonOneDown);
 button2.addEventListener('mousedown', onButtonTwoDown);
 
-onStart();
+// EMIT EVENTS
 
 async function onButtonOneDown(event) {
-    const message = 'Change light of button 1';
-    const buttonOne = true;
-    const data = { message, buttonOne };
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    };
-
-    const response = await fetch('/set-arduino-light-one', options);
-    const responseJSON = await response.json();
-
-    isButtonOnePressed = data.isLedOneOn;
-
-    constResponseJSONdata = JSON.parse(responseJSON.data);
-    console.log('someString: ' + constResponseJSONdata.someString);
-
-    isButtonOnePressed = constResponseJSONdata.isLedOneOn;
-
     // emit event for button1
-    browserSocket.emit('message', {
-        message: feedback.value,
+    browserSocket.emit('light', {
+        light: 0,
     });
 }
 
-// Listening for events from server
-browserSocket.on('message', function (data) {
-    display.innerHTML += '<p>' + data.message + '</p>';
-});
-
 async function onButtonTwoDown(event) {
-    const message = 'Change light of button 2';
-    const someBoolean = true;
-    const data = { message, someBoolean };
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    };
-
-    const response = await fetch('/set-arduino-light-two', options);
-    const responseJSON = await response.json();
-
-    constResponseJSONdata = JSON.parse(responseJSON.data);
-    console.log('someString: ' + constResponseJSONdata.someString);
-
-    isButtonTwoPressed = constResponseJSONdata.isLedTwoOn;
-
-    stateOfButtonTwo();
+    // emit event for button1
+    browserSocket.emit('light', {
+        light: 1,
+    });
 }
 
-async function onStart() {
-    const response = await fetch('/light-state');
-    const data = await response.json();
+// LISTEN ON SERVER
 
-    isButtonOnePressed = data.isLedOneOn;
-    isButtonTwoPressed = data.isLedTwoOn;
+// Listening for events from server
+browserSocket.on('lightState', function (data) {
+    console.log(data);
 
-    stateOfButtonOne();
-    stateOfButtonTwo();
-
-    debug.textContent = 'state received, buttons ready!';
-}
+    // display.innerHTML += '<p>' + data.message + '</p>';
+});
 
 // Set state of button1 and button2
 function stateOfButtonOne() {
@@ -115,10 +70,11 @@ function stateOfButtonTwo() {
 
 // send feedback on feedback to server
 feedback.addEventListener('keypress', function () {
-    browserSocket.emit('typing', handle.value);
+    hello.innerHTML = '';
+    browserSocket.emit('typing', feedback.value);
 });
 
 // listen for server for feedback
 browserSocket.on('typing', function (data) {
-    feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
+    hello.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
 });
