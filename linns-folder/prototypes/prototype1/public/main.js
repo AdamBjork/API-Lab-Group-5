@@ -1,11 +1,14 @@
-// call socket library in variable
-var socket = io();
+// call browserS library in variable
+var browserSocket = io();
 
-// variables for the buttons
+// variables for DOM elements
 const button1 = document.getElementById('button1');
 const button2 = document.getElementById('button2');
+const feedback = document.getElementById('feedback');
+const display = document.getElementById('display');
+
 let isBothActive;
-let isButtonOnePressed;
+let isButtonOnePressed = false;
 let isButtonTwoPressed;
 
 // event listeners
@@ -16,8 +19,8 @@ onStart();
 
 async function onButtonOneDown(event) {
     const message = 'Change light of button 1';
-    const someBoolean = true;
-    const data = { message, someBoolean };
+    const buttonOne = true;
+    const data = { message, buttonOne };
     const options = {
         method: 'POST',
         headers: {
@@ -26,16 +29,26 @@ async function onButtonOneDown(event) {
         body: JSON.stringify(data),
     };
 
-    const response = await fetch('/set-arduino-light', options);
+    const response = await fetch('/set-arduino-light-one', options);
     const responseJSON = await response.json();
+
+    isButtonOnePressed = data.isLedOneOn;
 
     constResponseJSONdata = JSON.parse(responseJSON.data);
     console.log('someString: ' + constResponseJSONdata.someString);
 
     isButtonOnePressed = constResponseJSONdata.isLedOneOn;
 
-    stateOfButtonOne();
+    // emit event for button1
+    browserSocket.emit('message', {
+        message: feedback.value,
+    });
 }
+
+// Listening for events from server
+browserSocket.on('message', function (data) {
+    display.innerHTML += '<p>' + data.message + '</p>';
+});
 
 async function onButtonTwoDown(event) {
     const message = 'Change light of button 2';
@@ -49,7 +62,7 @@ async function onButtonTwoDown(event) {
         body: JSON.stringify(data),
     };
 
-    const response = await fetch('/set-arduino-light', options);
+    const response = await fetch('/set-arduino-light-two', options);
     const responseJSON = await response.json();
 
     constResponseJSONdata = JSON.parse(responseJSON.data);
@@ -99,3 +112,13 @@ function stateOfButtonTwo() {
         button2.style.backgroundColor = 'lightslategray';
     }
 }
+
+// send feedback on feedback to server
+feedback.addEventListener('keypress', function () {
+    browserSocket.emit('typing', handle.value);
+});
+
+// listen for server for feedback
+browserSocket.on('typing', function (data) {
+    feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
+});

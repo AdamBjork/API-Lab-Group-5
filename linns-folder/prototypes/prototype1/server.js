@@ -12,10 +12,22 @@ const port = process.env.PORT || 4009; // changing the port
 app.use(express.static(__dirname + '/public'));
 app.use(express.json({ limit: '1mb' }));
 
+// creating socket function
 function onConnection(socket) {
     socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+
+    // receiving feedback message
+    socket.on('message', function (data) {
+        io.sockets.emit('message', data);
+    });
+
+    // broadcast when someone is typing
+    socket.on('typing', function (data) {
+        socket.broadcast.emit('typing', data);
+    });
 }
 
+// calling socket function
 io.on('connection', onConnection);
 
 http.listen(port, () => console.log('listening on port ' + port));
@@ -28,7 +40,6 @@ const board = new Board();
 //var for checking if led1 and led2 is on or off
 let isLedOneOn = false;
 let isLedTwoOn = false;
-let isBothOn = false;
 
 // BOARD READY
 board.on('ready', () => {
@@ -42,13 +53,12 @@ board.on('ready', () => {
         console.log('made socket connection', socket.id);
     });
 
-    app.post('/set-arduino-light', (request, response) => {
+    app.post('/set-arduino-light-one', (request, response) => {
         const data = request.body;
-        const someString = 'Hi buddy!';
 
         //for debugging
         console.log('message: ' + data.message);
-        console.log('someBoolean: ' + data.someBoolean);
+        console.log('buttonOne: ' + data.buttonOne);
 
         // function for turning the led1 ON/OFF
         if (isLedOneOn === false) {
@@ -57,31 +67,32 @@ board.on('ready', () => {
             led1.stop().off();
         }
         isLedOneOn = !isLedOneOn;
+    });
+
+    app.post('/set-arduino-light-two', (request, response) => {
+        const data = request.body;
+        const someString = 'Hi light 2';
+
+        //for debugging
+        console.log('message: ' + data.message);
+        console.log('someBoolean: ' + data.someBoolean);
 
         // function for turning led2 on/off
         if (isLedTwoOn === false) {
             led2.blink(500);
+            console.log(someString);
         } else {
             led2.stop().off();
         }
         isLedTwoOn = !isLedTwoOn;
-
-        // function for both led
-        if (isLedOneOn === true && isLedTwoOn === true) {
-            bothLed.blink(500);
-        } else {
-            bothLed.stop().off();
-        }
-
-        //for debugging using phone
-        data.isLedOneOn = isLedOneOn;
-        data.isLedTwoOn = isLedTwoOn;
-        data.someString = someString;
-        response.json({
-            status: 'success',
-            data: JSON.stringify(data),
-        });
     });
+
+    // function for both led
+    if (isLedOneOn === true && isLedTwoOn === true) {
+        bothLed.blink(500);
+    } else {
+        bothLed.stop().off();
+    }
 
     app.get('/light-state', function (request, response) {
         console.log('get received');
