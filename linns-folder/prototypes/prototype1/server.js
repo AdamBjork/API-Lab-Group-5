@@ -28,7 +28,6 @@ board.on('ready', () => {
     console.log('hello board');
     const led1 = new Led(13); // port 13 on arduino
     const led2 = new Led(7);
-    const bothLed = new Led(3);
 
     // function when socket connect
     io.on('connection', function (socket) {
@@ -78,13 +77,6 @@ board.on('ready', () => {
 
     // calling socket function when new connection
     io.on('connection', onConnection);
-
-    // function for both led
-    if (isLedOneOn === true && isLedTwoOn === true) {
-        bothLed.blink(500);
-    } else {
-        bothLed.stop().off();
-    }
 
     app.get('/light-state', function (request, response) {
         console.log('get received');
