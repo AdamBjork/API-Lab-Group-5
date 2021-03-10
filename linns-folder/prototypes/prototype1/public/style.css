@@ -4,6 +4,7 @@
     display: inline-block;
     margin: 30px;
     padding: 14px;
+    width: 200px;
 }
 
 #button2 {
@@ -12,6 +13,7 @@
     display: inline-block;
     margin: 30px;
     padding: 14px;
+    width: 200px;
 }
 
 #prototype {
