@@ -1,7 +1,4 @@
-'use strict';
-
-(function() {
-
+  (function() {
   var socket = io();
   var canvas = document.getElementsByClassName('whiteboard')[0];
   var colors = document.getElementsByClassName('color');
@@ -12,7 +9,7 @@
     color: 'black'
   };
   var drawing = false;
-
+  //Adding event listeners
   canvas.addEventListener('mousedown', onMouseDown, false);
   canvas.addEventListener('mouseup', onMouseUp, false);
   canvas.addEventListener('mouseout', onMouseUp, false);
@@ -24,7 +21,7 @@
   canvas.addEventListener('touchend', onMouseUp, false);
   canvas.addEventListener('touchcancel', onMouseUp, false);
   canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
-
+  
   for (var i = 0; i < colors.length; i++){
     colors[i].addEventListener('click', onColorUpdate, false);
   }
@@ -35,7 +32,7 @@
   window.addEventListener('resize', onResize, false);
   onResize();
 
-
+  //Drawing function that communicates to the socket
   function drawLine(x0, y0, x1, y1, color, emit){
     context.beginPath();
     context.moveTo(x0, y0);
@@ -63,7 +60,7 @@
     current.x = e.clientX||e.touches[0].clientX;
     current.y = e.clientY||e.touches[0].clientY;
   }
-  
+  //Function that clears the screen and communicates to the server
   function onMouseClick(e){
     newCanvas();
     socket.emit('clear', {
@@ -111,7 +108,6 @@
     };
   }
  
-
   function newCanvas(){
         context.clearRect(0, 0, canvas.width, canvas.height);
   }

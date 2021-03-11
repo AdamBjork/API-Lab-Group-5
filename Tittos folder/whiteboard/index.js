@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 
 app.use(express.static(__dirname + '/public'));
-
+// Run when client connects
 function onConnection(socket){
   socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
   socket.on('clear', function(data){
