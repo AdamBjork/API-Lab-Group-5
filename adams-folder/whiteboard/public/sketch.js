@@ -1,39 +1,33 @@
-//let socket = io();
-let particle;
-let array = [];
+let socket;
 
 function setup() {
-    createCanvas(400, 400);
-    background(220);
+    createCanvas(600, 400);
+    background(51);
 
     //socket = io.connect('http://localhost:3000');
-    let socket = io();
-    socket.on('drawing', newDrawing);
-    particle = new Particle(mouseX, mouseY);
-    setInterval(clearScreen, 5000);
+    socket = io();
+    socket.on('mouse', newDrawing);
 }
 
 function newDrawing(data){
     noStroke();
     fill(255, 0, 100);
-    particle.display(data.x, data.y);
+    ellipse(data.x, data.y, 20, 20);
 }
 
 function mouseDragged() {
-    let socket = io();
+    console.log('Sending: ' + mouseX + ',' + mouseY);
 
     let data = {
         x: mouseX,
         y: mouseY
     }
-    socket.emit('drawing', data);
+    socket.emit('mouse', data);
+
+    noStroke();
+    fill(255);
+    ellipse(mouseX, mouseY, 20, 20);
 }
 
 function draw() {
-
-}
-
-function clearScreen() {
-    clear();
-    background(220);
 }
