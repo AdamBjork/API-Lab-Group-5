@@ -1,6 +1,6 @@
 # What is this project?
 
-This project is a simple collaborative whiteboard using socket.io.
+This example is a simple collaborative whiteboard using socket.io.
 
 # What is the project exploring?
 

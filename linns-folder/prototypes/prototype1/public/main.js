@@ -29,7 +29,7 @@ async function onButtonOneDown(event) {
 }
 
 async function onButtonTwoDown(event) {
-    // emit event for button1
+    // emit event for button2
     browserSocket.emit('light', {
         light: 1,
     });
