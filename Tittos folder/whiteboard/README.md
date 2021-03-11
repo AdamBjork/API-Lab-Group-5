@@ -13,6 +13,4 @@ a port by supplying the `PORT` env variable.
 
 # Contributors 
 
-This code builds upon the whiteboard example provided on the socket.io's website (https://socket.io/demos/whiteboard/)
-
-Tsvetan (Titto) Vasilev 
+This code builds upon the whiteboard example provided on the socket.io's website (https://socket.io/demos/whiteboard/) and developed by Tsvetan (Titto) Vasilev.

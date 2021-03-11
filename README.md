@@ -4,26 +4,21 @@ In this project we explore the socket.io API library. We have tried out differen
 
 The socket.io library enables a real-time connection to be made between the browser and a server. Since our project is built on a two-way communication between two artefact we saw a lot of opportunity in exploring possible user experiences with the library.
 
-## Installation
+# Installation
+    - In VS Code:
+1. Open terminal
+2. Open the current environment in the terminal
+3. Type npm install
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+# How to use
 
-```bash
-pip install foobar
-```
+1. Start the server by typing "node app.js" in the terminal
+2. Open up your your browser and type "http://localhost:3001/"
 
-## Usage
-
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
 
 ## Contributes
 
 The people who contributed to this project was Titto Vasilev, Adam Björk & Linn Claesson.
 
 However, most of the code builds on other examples, listed below:
+https://socket.io/demos/whiteboard/
