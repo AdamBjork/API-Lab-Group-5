@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 
 // SOCKET SETUP
-//const socket = require('socket.io');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const port = process.env.PORT || 4009; // changing the port
@@ -12,6 +11,7 @@ const port = process.env.PORT || 4009; // changing the port
 app.use(express.static(__dirname + '/public'));
 app.use(express.json({ limit: '1mb' }));
 
+// listen on port
 http.listen(port, () => console.log('listening on port ' + port));
 
 // JOHNNY-FIVE SETUP
@@ -26,10 +26,11 @@ let isLedTwoOn = false;
 // BOARD READY
 board.on('ready', () => {
     console.log('hello board');
-    const led1 = new Led(13); // port 13 on arduino
+    // new led lights
+    const led1 = new Led(13);
     const led2 = new Led(7);
 
-    // function when socket connect
+    // listen for new socket connection
     io.on('connection', function (socket) {
         console.log('made socket connection', socket.id);
     });
@@ -45,16 +46,17 @@ board.on('ready', () => {
             state: isLedTwoOn,
         });
 
-        // server listen for emit light event
+        // server listen for emit 'light' event
         socket.on('light', function (data) {
             if (data.light === 0) {
-                // function for turning the led1 ON/OFF
+                // function for turning led1 ON/OFF
                 if (isLedOneOn === false) {
                     led1.blink(500);
                 } else {
                     led1.stop().off();
                 }
                 isLedOneOn = !isLedOneOn;
+                // send lightState data
                 io.emit('lightState', {
                     light: 0,
                     state: isLedOneOn,
@@ -67,6 +69,7 @@ board.on('ready', () => {
                     led2.stop().off();
                 }
                 isLedTwoOn = !isLedTwoOn;
+                // send lightState data
                 io.emit('lightState', {
                     light: 1,
                     state: isLedTwoOn,
@@ -77,11 +80,4 @@ board.on('ready', () => {
 
     // calling socket function when new connection
     io.on('connection', onConnection);
-
-    app.get('/light-state', function (request, response) {
-        console.log('get received');
-
-        const data = { isLedOneOn, isLedTwoOn };
-        response.send(data);
-    });
 });
