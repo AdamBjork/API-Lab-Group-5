@@ -66,7 +66,20 @@
   
   function onMouseClick(e){
     newCanvas();
+    socket.emit('clear', {
+      clear: 1, 
+    })
   }
+
+  socket.on('newScreen', function(data){
+    console.log(data);
+    if (data.clear == 1){
+      newCanvas();
+    }
+    else {
+      console.log('button not pressed, canvas not clear, code is broken.');
+    }
+  });
 
   function onMouseUp(e){
     if (!drawing) { return; }
