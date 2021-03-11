@@ -1,4 +1,3 @@
-
 'use strict';
 
 (function() {
@@ -7,6 +6,7 @@
   var canvas = document.getElementsByClassName('whiteboard')[0];
   var colors = document.getElementsByClassName('color');
   var context = canvas.getContext('2d');
+  var myBtn = document.getElementById('btnClear');
 
   var current = {
     color: 'black'
@@ -17,7 +17,8 @@
   canvas.addEventListener('mouseup', onMouseUp, false);
   canvas.addEventListener('mouseout', onMouseUp, false);
   canvas.addEventListener('mousemove', throttle(onMouseMove, 10), false);
-  
+  myBtn.addEventListener('click', onMouseClick);
+
   //Touch support for mobile devices
   canvas.addEventListener('touchstart', onMouseDown, false);
   canvas.addEventListener('touchend', onMouseUp, false);
@@ -29,6 +30,7 @@
   }
 
   socket.on('drawing', onDrawingEvent);
+  
 
   window.addEventListener('resize', onResize, false);
   onResize();
@@ -61,6 +63,10 @@
     current.x = e.clientX||e.touches[0].clientX;
     current.y = e.clientY||e.touches[0].clientY;
   }
+  
+  function onMouseClick(e){
+    newCanvas();
+  }
 
   function onMouseUp(e){
     if (!drawing) { return; }
@@ -91,6 +97,11 @@
       }
     };
   }
+ 
+
+  function newCanvas(){
+        context.clearRect(0, 0, canvas.width, canvas.height);
+  }
 
   function onDrawingEvent(data){
     var w = canvas.width;
@@ -103,5 +114,9 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
+  
+
+
+
 
 })();
