@@ -23,5 +23,5 @@ The people who contributed to this project was Titto Vasilev, Adam Björk & Linn
 
 However, most of the code builds on other examples, listed below:
 
--   Whiteboard example - https://socket.io/demos/whiteboard/
+-   Whiteboard example - https://github.com/socketio/socket.io/tree/master/examples/whiteboard
 -   RealTime Chat App - https://www.youtube.com/watch?v=jD7FnbI76Hg
