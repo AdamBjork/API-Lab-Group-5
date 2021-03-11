@@ -1,15 +1,26 @@
-const express = require('express');
-const app = express();
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-const port = process.env.PORT || 4400; // changing the port from 3000 to 4400
 
-app.use(express.static(__dirname + '/public'));
+let express = require('express');
 
-function onConnection(socket) {
-    socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+let app = express();
+let server = app.listen(3000);
+
+app.use(express.static('public'));
+
+console.log("My socket server is running");
+
+let socket = require('socket.io');
+
+let io = socket(server);
+
+io.sockets.on('connection', newConnection);
+
+function newConnection(socket) {
+    console.log('new connection' + socket.id);
+
+    socket.on('mouse', mouseMsg);
+
+    function mouseMsg(data) {
+        socket.broadcast.emit('mouse', data);
+        console.log(data);
+    }
 }
-
-io.on('connection', onConnection);
-
-http.listen(port, () => console.log('listening on port ' + port));
