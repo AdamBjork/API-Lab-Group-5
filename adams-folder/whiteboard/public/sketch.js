@@ -4,9 +4,10 @@ function setup() {
     createCanvas(600, 400);
     background(51);
 
-    //socket = io.connect('http://localhost:3000');
     socket = io();
     socket.on('mouse', newDrawing);
+
+    setInterval(clearScreen, 5000);
 }
 
 function newDrawing(data){
@@ -30,4 +31,9 @@ function mouseDragged() {
 }
 
 function draw() {
+}
+
+function clearScreen() {
+    clear();
+    background(51);
 }
