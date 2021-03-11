@@ -32,7 +32,7 @@ However, most of the code builds on other examples, listed below:
 
 -   Socket.io Whiteboard example - https://github.com/socketio/socket.io/tree/master/examples/whiteboard
 -   Traversy Media Real Time Chat App - https://www.youtube.com/watch?v=jD7FnbI76Hg
--   Web Dev Simplified Real Time Chat App 2 - https://www.youtube.com/watch?v=rxzOqP9YwmM
+-   Web Dev Simplified Real Time Chat App - https://www.youtube.com/watch?v=rxzOqP9YwmM
 -   The NetNinja Socket.io series - https://www.youtube.com/watch?v=vQjiN8Qgs3c
 -   The Coding Train - https://www.youtube.com/watch?v=bjULmG8fqc8
 -   The Coding Train - https://www.youtube.com/watch?v=Kw5tC5nQMRY
