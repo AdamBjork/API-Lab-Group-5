@@ -5,21 +5,23 @@ In this project we explore the socket.io API library. We have tried out differen
 The socket.io library enables a real-time connection to be made between the browser and a server. Since our project is built on a two-way communication between two artefact we saw a lot of opportunity in exploring possible user experiences with the library.
 
 # Installation
+
     - In VS Code:
+
 1. Open terminal
 2. Open the current environment in the terminal
 3. Type npm install
 
 # How to use
 
-1. Start the server by typing "node app.js" in the terminal
+1. Start the server by typing "node" and the 'server name' .js in the terminal
 2. Open up your your browser and type "http://localhost:3001/"
-
 
 ## Contributes
 
 The people who contributed to this project was Titto Vasilev, Adam Björk & Linn Claesson.
 
 However, most of the code builds on other examples, listed below:
-Whiteboard example - https://socket.io/demos/whiteboard/
-RealTime Chat App - https://www.youtube.com/watch?v=jD7FnbI76Hg
+
+-   Whiteboard example - https://socket.io/demos/whiteboard/
+-   RealTime Chat App - https://www.youtube.com/watch?v=jD7FnbI76Hg
