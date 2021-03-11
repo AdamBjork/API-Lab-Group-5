@@ -1,17 +1,18 @@
+# What is this project?
 
-# Socket.IO Collaborative Whiteboard
+This project is a simple collaborative whiteboard using socket.io.
 
-A simple collaborative whiteboard for Socket.IO
+# What is the project exploring?
 
-## How to use
+This project tests the communication through drawings given the fact that only limited amount of colours are presented and a Clear Screen button is available.
 
-```
-$ npm ci && npm start
-```
-
-And point your browser to `http://localhost:3000`. Optionally, specify
+# How to use
+1. npm ci && npm start
+2. Point your browser to `http://localhost:3000`. Optionally, specify
 a port by supplying the `PORT` env variable.
 
-## Features
+# Contributors 
 
-- draw on the whiteboard and all other users will see you drawings live
+This code builds upon the whiteboard example provided on the socket.io's website (https://socket.io/demos/whiteboard/)
+
+Tsvetan (Titto) Vasilev 
