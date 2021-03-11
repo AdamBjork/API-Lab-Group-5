@@ -1,4 +1,5 @@
 
+const { clear } = require('console');
 const express = require('express');
 const app = express();
 const http = require('http').Server(app);
@@ -10,8 +11,17 @@ app.use(express.static(__dirname + '/public'));
 
 function onConnection(socket){
   socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+  socket.on('clear', function(data){
+    if (data.clear == 1) {
+      io.emit('newScreen', {
+        clear: 1,
+      })
+    }
+    else io.emit('newScreen', {
+      clear: 0,
+    })
+  })
 }
-
 
 io.on('connection', onConnection);
 
