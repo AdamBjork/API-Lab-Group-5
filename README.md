@@ -4,6 +4,10 @@ In this project we explore the socket.io API library. We have tried out differen
 
 The socket.io library enables a real-time connection to be made between the browser and a server. Since our project is built on a two-way communication between two artefacts, we saw a lot of opportunity in exploring possible user experiences with the library.
 
+For further information on Socket.io visit: 
+https://socket.io/
+
+
 # Installation
 
 Make sure Node.js, a text editor and a working terminal installed. 
