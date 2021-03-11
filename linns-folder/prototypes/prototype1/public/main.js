@@ -1,12 +1,13 @@
-// call browserS library in variable
+// call browserSocket library in variable
 var browserSocket = io();
 
 // variables for DOM elements
 const button1 = document.getElementById('button1');
 const button2 = document.getElementById('button2');
-const feedback = document.getElementById('feedback');
+
 const display = document.getElementById('display');
 const hello = document.getElementById('hello');
+const both = document.getElementById('both');
 
 let isBothActive;
 let isButtonOnePressed;
@@ -23,6 +24,8 @@ async function onButtonOneDown(event) {
     browserSocket.emit('light', {
         light: 0,
     });
+
+    isButtonOnePressed = !isButtonOnePressed;
 }
 
 async function onButtonTwoDown(event) {
@@ -30,15 +33,46 @@ async function onButtonTwoDown(event) {
     browserSocket.emit('light', {
         light: 1,
     });
+
+    isButtonTwoPressed = !isButtonTwoPressed;
 }
 
 // LISTEN ON SERVER
 
-// Listening for events from server
+// Listening for lightState
 browserSocket.on('lightState', function (data) {
     console.log(data);
 
-    // display.innerHTML += '<p>' + data.message + '</p>';
+    // feedback in browser :)
+    if (data.light === 0) {
+        isButtonOnePressed = data.state;
+    } else if (data.light === 1) {
+        isButtonTwoPressed = data.state;
+    }
+
+    if (isButtonOnePressed === true) {
+        display.innerHTML = '<p>Button ONE has been pressed</p>';
+        console.log('Button 1 is active');
+    } else {
+        display.innerHTML = '<p> </p>';
+    }
+
+    if (isButtonTwoPressed === true) {
+        hello.innerHTML = '<p>Button TWO has been pressed</p>';
+        console.log('Button 2 is active');
+    } else {
+        hello.innerHTML = '<p> </p>';
+    }
+
+    if (isButtonOnePressed === true && isButtonTwoPressed === true) {
+        console.log('Both buttons active');
+        both.innerHTML = '<p>Both buttons are being pressed!</p>';
+    } else {
+        both.innerHTML = '<p> </p>';
+    }
+
+    stateOfButtonOne();
+    stateOfButtonTwo();
 });
 
 // Set state of button1 and button2
@@ -67,14 +101,3 @@ function stateOfButtonTwo() {
         button2.style.backgroundColor = 'lightslategray';
     }
 }
-
-// send feedback on feedback to server
-feedback.addEventListener('keypress', function () {
-    hello.innerHTML = '';
-    browserSocket.emit('typing', feedback.value);
-});
-
-// listen for server for feedback
-browserSocket.on('typing', function (data) {
-    hello.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
-});
