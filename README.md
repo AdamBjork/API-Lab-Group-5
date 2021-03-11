@@ -21,4 +21,5 @@ The socket.io library enables a real-time connection to be made between the brow
 The people who contributed to this project was Titto Vasilev, Adam Björk & Linn Claesson.
 
 However, most of the code builds on other examples, listed below:
-https://socket.io/demos/whiteboard/
+Whiteboard example - https://socket.io/demos/whiteboard/
+RealTime Chat App - https://www.youtube.com/watch?v=jD7FnbI76Hg
