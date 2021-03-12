@@ -8,8 +8,9 @@ This project tests the communication through drawings given the fact that only l
 
 # How to use
 1. Open the current environment in the terminal
-2. npm ci && npm start
-3. Point your browser to `http://localhost:3000`. Optionally, specify
+2. Type npm ci && npm start
+3. Type node index.js
+4. Point your browser to `http://localhost:3000`. Optionally, specify
 a port by supplying the `PORT` env variable.
 
 # Contributors 
