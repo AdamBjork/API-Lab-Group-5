@@ -44,7 +44,6 @@ body {
     background-color: black;
 }
 .color.red {
-    /* reduce the hue on the colours a bit */
     background-color: red;
 }
 .color.green {

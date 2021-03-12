@@ -23,7 +23,7 @@ npm install
 node index.js
 ```
 
-4. Open up your your browser and type (http://localhost:4000)
+4. Open up your your browser and type http://localhost:4000
 5. Start using the chat!
 
 ## Contributors
