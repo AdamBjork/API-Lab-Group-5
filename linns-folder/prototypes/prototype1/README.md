@@ -51,6 +51,6 @@ The prototype code was based on:
 
 -   Workshop with Peter Tolstrup Aagesen 2021-03-02 - https://github.com/helmersson/Arduino-examples/blob/main/public/index.html
 
--   Code Train - https://www.youtube.com/watch?v=Kw5tC5nQMRY
+-   The Coding Train - https://www.youtube.com/watch?v=Kw5tC5nQMRY
 
 -   Johnny-five, get started - http://johnny-five.io/examples/
