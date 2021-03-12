@@ -14,4 +14,4 @@ This project explores a chat application which also presents the opportunity of 
 
 # Contributors 
 
-Please, refer to the main readme.md file for this information.
+This code is developed by Tsvetan (Titto) Vasilev and it's based on this example: https://www.youtube.com/watch?v=jD7FnbI76Hg&ab_channel=TraversyMedia 

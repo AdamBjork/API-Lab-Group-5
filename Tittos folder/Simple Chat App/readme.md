@@ -14,4 +14,4 @@ This example builds a chat application which requires an username before you sta
 
 # Contributors 
 
-Please, refer to the main readme.md file for this information.
+This code is developed by Tsvetan (Titto) Vasilev and it's build upon this example https://www.youtube.com/watch?v=rxzOqP9YwmM&ab_channel=WebDevSimplified
