@@ -1,7 +1,5 @@
 // code from: https://github.com/socketio/socket.io/blob/master/examples/whiteboard/public/main.js
 
-'use strict';
-
 (function () {
     var socket = io();
     var canvas = document.getElementsByClassName('whiteboard')[0];
