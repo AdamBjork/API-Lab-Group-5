@@ -4,7 +4,7 @@ This is an example of a simple chat application that was created with socket.io.
 
 ## What is the project exploring?
 
-This example explores how you can use the socket.io API, and in this case a real-time chat application. The drawing application allows for communication between users by sending each other text messages.
+This example explores how you can use the socket.io API, and in this case a real-time chat application. The chat application allows for communication between users by sending each other text messages.
 
 ## How to use
 

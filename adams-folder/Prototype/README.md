@@ -1,6 +1,6 @@
 # Prototype - a drawing application with lifespan
 
-This a prototype of a drawing whiteboard that incorporates a lifespan to the messages, it was created with socket.io and p5.js.
+This is a prototype of a drawing whiteboard that incorporates a lifespan to the messages, it was created with socket.io and p5.js.
 
 ## What is the prototype exploring?
 
