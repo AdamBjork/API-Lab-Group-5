@@ -23,7 +23,7 @@ npm install
 npm run devStart
 ```
 
-4. Run Live Server on your text editor
+4. Run "Live Server" in your text editor
 5. Start chatting!
 
 ## Contributors
