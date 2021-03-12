@@ -4,24 +4,23 @@ In this project we explore the socket.io API library. We have tried out differen
 
 The socket.io library enables a real-time connection to be made between the browser and a server. Since our project is built on a two-way communication between two artefacts, we saw a lot of opportunity in exploring possible user experiences with the library.
 
-For further information on Socket.io visit: 
+For further information on Socket.io visit:
 https://socket.io/
-
 
 # Installation
 
-Make sure Node.js, a text editor and a working terminal installed. 
+Make sure you have a text editor, a working terminal and Node.js installed.
 
     - In VS Code:
 
 1. Open terminal
-2. Open the current environment in the terminal
+2. Open the correct environment in the terminal
 3. Type npm install
 
 # How to use
 
-1. Make sure that the current environment is selected in the terminal
-2. Start the server by typing "node" and the 'server name' .js in the terminal
+1. Make sure that the accurate environment is opened in the terminal
+2. Start the server by typing "node" + 'server name' .js in the terminal
 3. Open up your your browser and type "http://localhost:" + the port number according to the example.
 
 ## Contributes

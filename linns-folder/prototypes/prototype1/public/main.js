@@ -66,7 +66,8 @@ browserSocket.on('lightState', function (data) {
 
     if (isButtonOnePressed === true && isButtonTwoPressed === true) {
         console.log('Both buttons active');
-        both.innerHTML = '<p>Both buttons are being pressed!</p>';
+        both.innerHTML =
+            '<p><STRONG>BOTH BUTTONS ARE BEING PRESSED!</STRONG></p>';
     } else {
         both.innerHTML = '<p> </p>';
     }
@@ -78,26 +79,24 @@ browserSocket.on('lightState', function (data) {
 // Set state of button1 and button2
 function stateOfButtonOne() {
     if (isButtonOnePressed) {
-        console.log('button 1 here');
-        button1.textContent = 'LEFT BUTTON IS PRESSED';
+        button1.textContent = 'BUTTON ONE IS PRESSED';
         button1.style.color = 'black';
-        button1.style.backgroundColor = 'yellow';
+        button1.style.backgroundColor = '#fffd7d';
     } else {
-        button1.textContent = 'PUSH LEFT BUTTON';
+        button1.textContent = 'ONE';
         button1.style.color = 'white';
-        button1.style.backgroundColor = 'lightslategray';
+        button1.style.backgroundColor = '#362d69';
     }
 }
 
 function stateOfButtonTwo() {
     if (isButtonTwoPressed) {
-        console.log('button 2 hello');
-        button2.textContent = 'RIGHT BUTTON IS PRESSED';
+        button2.textContent = 'BUTTON TWO IS PRESSED';
         button2.style.color = 'black';
-        button2.style.backgroundColor = 'yellow';
+        button2.style.backgroundColor = '#fffd7d';
     } else {
-        button2.textContent = 'PUSH RIGHT BUTTON';
+        button2.textContent = 'TWO';
         button2.style.color = 'white';
-        button2.style.backgroundColor = 'lightslategray';
+        button2.style.backgroundColor = '#362d69';
     }
 }
