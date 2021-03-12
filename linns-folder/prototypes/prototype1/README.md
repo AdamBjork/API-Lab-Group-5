@@ -20,6 +20,10 @@ If on a mac, also download Xcode.
 3. Go to File>Examples>Firmata>StandardFirmataPlus
 4. Upload the example to your Arduino
 
+Here is a picture of the wiring:
+
+-   https://imgur.com/a/sAAoOYu
+
 ### In VS code
 
 1. Open the terminal
@@ -36,7 +40,7 @@ npm install
 node server.js
 ```
 
-5. Open up your your browser and type http://localhost:4400
+5. Open up your your browser and type http://localhost:4009
 6. Play around with the arduino lights through the browsers.
 
 ## Contributors
