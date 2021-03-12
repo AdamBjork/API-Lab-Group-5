@@ -11,7 +11,8 @@ app.use(express.static(__dirname + '/public'));
 // Run when client connects
 function onConnection(socket){
   socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
-  socket.on('clear', function(data){
+  // If statement is added that listens to the "CLEAR" button 
+    socket.on('clear', function(data){
     if (data.clear == 1) {
       io.emit('newScreen', {
         clear: 1,
