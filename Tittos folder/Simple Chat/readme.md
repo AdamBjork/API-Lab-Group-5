@@ -1,17 +1,17 @@
 # What is this project?
 
-This example is a simple collaborative whiteboard using socket.io.
+This example is a simple chat application using socket.io.
 
 # What is the project exploring?
 
-This project tests the communication through drawings given the fact that only limited amount of colours are presented and a Clear Screen button is available.
+This example builds a chat application which requires an username before you start and works across multiple platform which allows for people to communicate.
 
 # How to use
 1. Open the current environment in the terminal
-2. npm ci && npm start
-3. Point your browser to `http://localhost:3000`. Optionally, specify
-a port by supplying the `PORT` env variable.
+2. Type "npm install"
+3. Type node "index.js"
+4. Point your browser to `http://localhost:5000`. 
 
 # Contributors 
 
-This code builds upon the whiteboard example provided on the socket.io's website (https://github.com/socketio/socket.io/tree/master/examples/whiteboard) and developed by Tsvetan (Titto) Vasilev.
+Please, refer to the main readme.md file for this information.
